@@ -1,0 +1,6 @@
+{
+    "name": "clsi-proxy",
+    "description": "Provides a proxy to the CLSI to allow it to be called via the client",
+    "version": "0.1",
+    "author": "ScribTeX Ltd. <team@scribtex.com>"
+}
