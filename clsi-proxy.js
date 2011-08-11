@@ -12,14 +12,14 @@ var http   = require("http");
 var ShellGitPlugin = module.exports = function(ide) {
     this.ide = ide;
     this.hooks = [];
-    this.name = "clsi-proxy";
-    this.establishProxy("http://localhost:3000");
+    this.name = "clsi-proxy"
+    this.establishProxy("http://localhost:3001", "1bd993d7d739eca8740f9919d8748352");
 };
 
 sys.inherits(ShellGitPlugin, Plugin);
 
 (function() {
-    this.establishProxy = function(clsiUrl) {
+    this.establishProxy = function(clsiUrl, token) {
         this.ide.httpServer.use(function(req, res, next) {
             if (req.url.match("^/clsi")) {
                 // Remove /clsi from beginning of url and any leading slash
@@ -27,7 +27,7 @@ sys.inherits(ShellGitPlugin, Plugin);
                 if (path[0] == "/")
                     path = path.slice(1, path.length);
                   
-                var backendUrl = url.parse(clsiUrl + "/" + path);
+                var backendUrl = url.parse(clsiUrl + "/" + path + "?token=" + token);
                 
                 var port = backendUrl.port;
                 if (!port) {
