@@ -13,7 +13,7 @@ var ShellGitPlugin = module.exports = function(ide) {
     this.ide = ide;
     this.hooks = [];
     this.name = "clsi-proxy"
-    this.establishProxy("http://localhost:3001", "1bd993d7d739eca8740f9919d8748352");
+    this.establishProxy(ide.options.clsiUrl, ide.options.clsiToken);
 };
 
 sys.inherits(ShellGitPlugin, Plugin);
